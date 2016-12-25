@@ -1,20 +1,14 @@
 <?php
 session_start();
 
-require_once($_SERVER["DOCUMENT_ROOT"]."/includes/functions.inc");
+require_once("./includes/functions.inc.php");
+require_once("./config.inc.php");
 
-if(CheckLogin() != true)
+if(CheckLogin($EmailAddress) != true)
 {
-	print "Sorry, your login was invalid or your session expired!";
+	header("Location: ./login/");
 	exit();
 }
-
-
-$DocumentRoot = $_SERVER["DOCUMENT_ROOT"];
-$DocumentRoot = substr($DocumentRoot, 6);
-$DocumentRoot = "/home/".substr($DocumentRoot, 0, strpos($DocumentRoot, "/"))."/public_html/";
-
-//print "Document Root: '".$DocumentRoot."'<p>";
 
 $URL = $_SERVER["SERVER_NAME"];
 
@@ -143,20 +137,19 @@ function PrintDirectories($Path, $Iteration, $URL)
 	</style>
 
 
-	<title>Dashboard | Web Control Panel</title>
+	<title>Dashboard | Editor</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 	
 	<style type="text/css">
 	<!--
-	@import url("/includes/styles/tablestyle.css");
+	@import url("./includes/styles/tablestyle.css");
 	-->
 	</style>
 
-	<?php
-	include($_SERVER["DOCUMENT_ROOT"]."/includes/styles/Styles.inc");
-	?>
-	
+	<link rel="stylesheet" type="text/css" href="./includes/styles/curveddivs.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="./includes/styles/main.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="./includes/styles/TopNav.css" media="screen"/>
 
 	<script language="javascript">
 	
@@ -185,7 +178,7 @@ function PrintDirectories($Path, $Iteration, $URL)
 		clearAll();
 
 		$(document).ready(function(){
-		$.get('/Listing.php?Path=' + Path, function(Data) {ShowFileListing(Data);} , "html");
+		$.get('./Listing.php?Path=' + Path, function(Data) {ShowFileListing(Data);} , "html");
      		});
 
 		//setTimeout('ShowFileListing("' + Path + '")', 2);

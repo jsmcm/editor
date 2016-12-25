@@ -1,6 +1,6 @@
 <?php
 
-include($_SERVER["DOCUMENT_ROOT"]."/includes/functions.inc");
+include("./includes/functions.inc");
 
 function recurse_copy($src,$dst) 
 {

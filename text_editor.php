@@ -47,16 +47,17 @@ $Contents = file_get_contents($FileName);
 	<title>Dashboard | Web Control Panel</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-	
-	<style type="text/css">
-	<!--
-	@import url("/includes/styles/tablestyle.css");
-	-->
-	</style>
+        <style type="text/css">
+        <!--
+        @import url("./includes/styles/tablestyle.css");
+        -->
+        </style>
 
-	<?php
-	include($_SERVER["DOCUMENT_ROOT"]."/includes/styles/Styles.inc");
-	?>
+        <link rel="stylesheet" type="text/css" href="./includes/styles/curveddivs.css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="./includes/styles/main.css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="./includes/styles/TopNav.css" media="screen"/>
+
+	
 	
 	<script language="javascript">
 	

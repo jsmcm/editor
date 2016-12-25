@@ -226,7 +226,7 @@
 
     			RndString = d.getFullYear() + "" + d.getMonth() + "" + d.getDate() + ""  + d.getHours() + "" + d.getMinutes() + "" + d.getSeconds() + "" + count++;
     
-    			xmlhttp.open("GET",'/ajax/CreateFile.php?FileName=' + Path + FileName + '&C=' + RndString,false);
+    			xmlhttp.open("GET",'./ajax/CreateFile.php?FileName=' + Path + FileName + '&C=' + RndString,false);
     			xmlhttp.send(null);
 
     			//alert("xmlhttp.responseText: " + xmlhttp.responseText);
@@ -278,7 +278,7 @@
 
     			RndString = d.getFullYear() + "" + d.getMonth() + "" + d.getDate() + ""  + d.getHours() + "" + d.getMinutes() + "" + d.getSeconds() + "" + count++;
     
-    			xmlhttp.open("GET",'/ajax/CreateDirectory.php?DirectoryName=' + Path + DirectoryName + '&C=' + RndString,false);
+    			xmlhttp.open("GET",'./ajax/CreateDirectory.php?DirectoryName=' + Path + DirectoryName + '&C=' + RndString,false);
     			xmlhttp.send(null);
 
     			//alert("xmlhttp.responseText: " + xmlhttp.responseText);

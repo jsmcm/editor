@@ -14,7 +14,7 @@ else
 
 	$Path = $_GET["Path"];
 
-	require_once($_SERVER["DOCUMENT_ROOT"]."/includes/functions.inc");
+	require_once("../includes/functions.inc.php");
 	
 	$zip = new ZipArchive;
 

@@ -1,9 +1,6 @@
 <?php
 session_start();
-
-$DocumentRoot = $_SERVER["DOCUMENT_ROOT"];
-$DocumentRoot = substr($DocumentRoot, 6);
-$DocumentRoot = "/home/".substr($DocumentRoot, 0, strpos($DocumentRoot, "/"))."/public_html/";
+require_once("../config.inc.php");
 
 $URL = $_SERVER["SERVER_NAME"];
 
