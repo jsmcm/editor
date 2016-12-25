@@ -1,0 +1,85 @@
+<?php
+
+
+function Zip($source, $destination)
+{
+    if (!extension_loaded('zip') || !file_exists($source)) {
+        return false;
+    }
+
+    $zip = new ZipArchive();
+    if (!$zip->open($destination, ZIPARCHIVE::CREATE)) {
+        return false;
+    }
+
+    $source = str_replace('\\', '/', realpath($source));
+
+	print "source = '".$source."'<br>";
+	print "realpath(source) = '".realpath($source)."'<br>";
+
+    if (is_dir($source) === true)
+    {
+
+	$BasePath = substr($source, strrpos($source, '/') + 1)."/";
+	print "Base: ".$BasePath."<br>";
+	$zip->addEmptyDir($BasePath);
+
+        $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($source), RecursiveIteratorIterator::SELF_FIRST);
+
+        foreach ($files as $file)
+        {
+            $file = str_replace('\\', '/', $file);
+
+            // Ignore "." and ".." folders
+            if( in_array(substr($file, strrpos($file, '/')+1), array('.', '..')) )
+                continue;
+
+            $file = realpath($file);
+
+            if (is_dir($file) === true)
+            {
+		print "addEmptyDir(".str_replace($source . '/', '', $file . '/').")<br>";
+                $zip->addEmptyDir($BasePath.str_replace($source . '/', '', $file . '/'));
+            }
+            else if (is_file($file) === true)
+            {
+                print "addFromString(".str_replace($source . '/', '', $file).", ".file_get_contents($file).");<br>";
+                $zip->addFromString($BasePath.str_replace($source . '/', '', $file), file_get_contents($file));
+            }
+        }
+    }
+    else if (is_file($source) === true)
+    {
+        $zip->addFromString(basename($source), file_get_contents($source));
+    }
+
+    return $zip->close();
+}
+
+Zip("/home/nodecprs/public_html/Empty_File", "/home/nodecprs/public_html/EF.zip");
+
+
+if(isset($_POST["FilesAndFolders"]))
+{
+        $FilesAndFolder = array();
+        $FilesAndFolders = json_decode($_POST["FilesAndFolders"], true);
+
+        for($x = 0; $x < count($FilesAndFolders["Files"]); $x++)
+        {
+                //print "Delete File: ".$FilesAndFolders["Files"][$x]."<br>";
+                DeleteFile($FilesAndFolders["Files"][$x]);
+        }
+
+        for($x = 0; $x < count($FilesAndFolders["Folders"]); $x++)
+        {
+                //print "Delete Directory: ".$FilesAndFolders["Folders"][$x]."<br>";
+                DeleteDirectory($FilesAndFolders["Folders"][$x]);
+        }
+}
+
+
+
+
+?>
+
+

@@ -1,0 +1,39 @@
+<?php
+
+require_once($_SERVER["DOCUMENT_ROOT"]."/includes/functions.inc");
+
+$x = 0;
+
+foreach($_POST as $key=>$val)
+{
+	print $key." = ".$val."<br>";
+	$x++;
+
+	if($key == "directory")
+	{	
+		foreach($_POST["directory"] as $val)
+		{
+			print $x.") Dir --> ".$val."<br>";
+			//DeleteDirectory($val);
+		}
+	}
+
+	if($key == "file")
+	{	
+		foreach($_POST["file"] as $val)
+		{
+			print $x.") File --> ".$val."<br>";
+
+			$f = fopen("./BD.txt", "a");
+			fwrite($f, "File --> ".$val."\r\n");
+			fclose($f);
+
+			//DeleteFile($val);
+		}
+	}
+
+}
+
+//header("Location: index.php?Path=".$_POST["Path"]);
+
+?>
