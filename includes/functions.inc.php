@@ -287,7 +287,7 @@ function DeleteDirectory($DirectoryName)
 
 	function ClearLogin()
 	{
-		if(isset($_SESSION["LoggedIN"]))
+		if(isset($_SESSION["LoggedIn"]))
 		{
 			unset($_SESSION["LoggedIn"]);
 		}
