@@ -170,6 +170,8 @@ function PrintDirectories($Path, $Iteration, $URL)
 
 		CurrentPath = Path;
 
+		//alert(Path);
+
 		if(CurrentPath.substr(CurrentPath.length - 1, 1) != "/")
 		{
 			CurrentPath = CurrentPath + "/";
@@ -324,7 +326,7 @@ function PrintDirectories($Path, $Iteration, $URL)
 	<body style="margin:0; background: #ededed" onload="GetFileListing('<?php print $Path; ?>');"> 
 		 
 	<div id="ProgressSpinner" style="position:absolute; zIndex:100; display:none; visibility:hidden; width:20%; height:20%; top:250px; left:40%; background-color:white; align:center; border:solid 1px grey">
-	<center><img src="/images/indicator.gif"></center>
+	<center><img src="./images/indicator.gif"></center>
 	</div>
 
 	<div align="center" style="width:95%; min-height:100%; background:white; margin: 15px 25px 25px; padding-top:20px; padding-bottom:20px; border-style:dotted; border-width:1px">

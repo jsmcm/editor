@@ -21,14 +21,17 @@ else
 {
 	$Path = $DocumentRoot;
 }
-	
-if(substr($Path, strlen($Path) - 1) != "/")
-{
-	$Path = $Path."/";
-}
+	if(substr($DocumentRoot, strlen($DocumentRoot) - 1, 1) != "/")
+	{
+		$DocumentRoot = $DocumentRoot."/";
+	}
 
+	if(substr($Path, strlen($Path) - 1, 1) != "/")
+	{
+		$Path = $Path."/";
+	}
 
-        if(strlen($Path) > strpos($Path, "public_html") + 12)
+        if(strlen($Path) > strlen($DocumentRoot))
         {
                 $x = strrpos($Path, "/", -2) + 1;
 
