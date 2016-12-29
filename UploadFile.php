@@ -5,7 +5,7 @@ require_once("./includes/functions.inc.php");
 require_once("./config.inc.php");
 
 
-if(CheckLogin() != true)
+if(CheckLogin($EmailAddress) != true)
 {
         print "Sorry, your login was invalid or your session expired!";
         exit();
