@@ -1,6 +1,7 @@
 <?php
 
-include($_SERVER["DOCUMENT_ROOT"]."/includes/functions.inc");
+require_once("./includes/functions.inc.php");
+require_once("./config.inc.php");
 
 function recurse_copy($src,$dst) 
 {

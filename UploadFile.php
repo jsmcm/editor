@@ -1,18 +1,15 @@
 <?php
 session_start();
 
-require_once($_SERVER["DOCUMENT_ROOT"]."/includes/functions.inc");
+require_once("./includes/functions.inc.php");
+require_once("./config.inc.php");
+
 
 if(CheckLogin() != true)
 {
         print "Sorry, your login was invalid or your session expired!";
         exit();
 }
-
-
-$DocumentRoot = $_SERVER["DOCUMENT_ROOT"];
-$DocumentRoot = substr($DocumentRoot, 6);
-$DocumentRoot = "/home/".substr($DocumentRoot, 0, strpos($DocumentRoot, "/"))."/public_html/";
 
 $URL = $_SERVER["SERVER_NAME"];
 

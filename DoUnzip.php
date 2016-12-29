@@ -1,9 +1,8 @@
 <?php
 session_start();
 
-$DocumentRoot = $_SERVER["DOCUMENT_ROOT"];
-$DocumentRoot = substr($DocumentRoot, 6);
-$DocumentRoot = "/home/".substr($DocumentRoot, 0, strpos($DocumentRoot, "/"))."/public_html/";
+require_once("./includes/functions.inc.php");
+require_once("./config.inc.php");
 
 $URL = $_SERVER["SERVER_NAME"];
 
@@ -31,12 +30,6 @@ else
 	exit();
 }
 
-//print "Unzipping ".$ZipFile." -> to ".$Path;
-//exit();
-
-	require_once($_SERVER["DOCUMENT_ROOT"]."/includes/functions.inc");
-
-	
 	$zip = new ZipArchive;
 
 	if($zip->open($ZipFile))
