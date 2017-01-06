@@ -1,6 +1,5 @@
 <?php
-
-include("./includes/functions.inc");
+require_once("../includes/functions.inc.php");
 
 function recurse_copy($src,$dst) 
 {

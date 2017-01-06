@@ -43,13 +43,12 @@ $LeftNavPath = substr($Path, 0, strpos($Path, "public_html") + 12);
 	
 	<style type="text/css">
 	<!--
-	@import url("/includes/styles/tablestyle.css");
+	@import url("./includes/styles/tablestyle.css");
 	-->
 	</style>
-
-	<?php
-	include($_SERVER["DOCUMENT_ROOT"]."/includes/styles/Styles.inc");
-	?>
+        <link rel="stylesheet" type="text/css" href="./includes/styles/curveddivs.css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="./includes/styles/main.css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="./includes/styles/TopNav.css" media="screen"/>
 	
 
 	</head> 
